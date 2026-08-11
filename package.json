@@ -1,0 +1,16 @@
+{
+    "name": "gold-digger",
+    "version": "1.0.0",
+    "description": "",
+    "license": "ISC",
+    "author": "Shuri",
+    "type": "module",
+    "main": "server.js",
+    "scripts": {
+        "start": "node server.js",
+        "dev": "nodemon server.js"
+    },
+    "devDependencies": {
+        "nodemon": "^3.1.14"
+    }
+}
