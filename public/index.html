@@ -23,7 +23,7 @@
             <p>£<span id="price-display" class="price" aria-live="assertive">----.--</span> / Oz*</p>
             <p id="connection-status" class="status" aria-live="polite">Live Price 🟢</p>
         </section>
-        <form>
+        <form id="investment-form">
             <label for="investment-amount">Amount to invest</label>
             <div class="input-container">
                 <div class="currency">£</div>
@@ -32,10 +32,10 @@
             <button id="invest-btn" class="invest-btn" aria-label="Invest in gold now">Invest Now!</button>
         </form>
         <!-- This dialog opens after a successful purchase -->
-        <dialog class="outputs" role="dialog" aria-labelledby="dialog-title" aria-describedby="investment-summary" lang="en">
+        <dialog closedby="any" id="summary-modal" class="outputs" role="dialog" aria-labelledby="dialog-title" aria-describedby="investment-summary" lang="en">
             <h2>Summary</h2>
-            <p id="investment-summary">You just bought 1.3 ounces (ozt) for £3000. \n You will receive documentation shortly.</p>
-                <button aria-label="Close dialog and return to main page" autofocus>OK</button>
+            <p id="investment-summary">You just bought <span id="ounces">1.3</span> ounces (ozt) for £<span id="amount">3000</span>. You will receive documentation shortly.</p>
+                <button commandfor="summary-modal" command="close" aria-label="Close dialog and return to main page" autofocus>OK</button>
         </dialog>
         <p class="footnote">* 1oz = 1 troy ounce of 24 Carat Gold</p>
     </main>
