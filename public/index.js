@@ -1,4 +1,5 @@
 const connectionStatus = document.getElementById('connection-status')
+const priceDisplay = document.getElementById('price-display')
 const eventSource = new EventSource('http://localhost:8000/events')
 
 eventSource.onmessage = (event) => {
@@ -7,4 +8,9 @@ eventSource.onmessage = (event) => {
 
 eventSource.onerror = (event) => {
     connectionStatus.textContent = 'Disconnected 🔴'
+    priceDisplay.textContent = '----.--'
 }
+
+eventSource.addEventListener('priceUpdate', (event) => {
+    priceDisplay.textContent = event.data
+})
