@@ -35,7 +35,10 @@
         <dialog closedby="any" id="summary-modal" class="outputs" role="dialog" aria-labelledby="dialog-title" aria-describedby="investment-summary" lang="en">
             <h2>Summary</h2>
             <p id="investment-summary">You just bought <span id="ounces">1.3</span> ounces (ozt) for £<span id="amount">3000</span>. You will receive documentation shortly.</p>
+            <div class="form-buttons">
                 <button commandfor="summary-modal" command="close" aria-label="Close dialog and return to main page" autofocus>OK</button>
+                <a href="/transaction-pdf" download="output.pdf" id="download-pdf">Download Receipt</a>
+            </div>
         </dialog>
         <p class="footnote">* 1oz = 1 troy ounce of 24 Carat Gold</p>
     </main>
