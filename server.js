@@ -1,19 +1,25 @@
 import http from 'node:http'
 import { serveStatic } from './utils/serveStatic.js'
-import { handleEvents } from './utils/handleEvents.js'
-import { handlePost } from './handlers/routeHandlers.js'
+import { handleSSE } from './utils/handleSSE.js'
+import { handleGet, handlePost } from './handlers/routeHandlers.js'
 
 const __dirname = import.meta.dirname
 const PORT = 8000
 const server = http.createServer(async (req, res) => {
 
     if (req.url === '/events') {
-        return handleEvents(req, res)
+        return handleSSE(req, res)
     }
 
     if (req.url === '/') {
         if (req.method === 'POST') {
             return handlePost(req, res)
+        }
+    }
+
+    if (req.url === '/transaction-pdf') {
+        if (req.method === 'GET') {
+            return handleGet(res)
         }
     }
 

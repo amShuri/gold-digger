@@ -1,7 +1,9 @@
+import fs from 'node:fs'
+import PDFDocument from 'pdfkit'
 import nodemailer from 'nodemailer'
 import { EventEmitter } from 'node:events';
 
-export const sendEmailEmitter = new EventEmitter()
+export const transactionEmitter = new EventEmitter()
 
 const transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -33,4 +35,21 @@ async function sendEmail(purchase) {
     }
 }
 
-sendEmailEmitter.on('transactionCompleted', sendEmail)
+function generatePDF(purchase) {
+    const doc = new PDFDocument()
+    const stream = fs.createWriteStream('output.pdf')
+
+    doc.pipe(stream)
+    doc.text(`
+        Gold Digger (Scrimba Project)
+
+        Amount Paid: £${purchase.amountPaid}
+        Gold Price: £${purchase.pricePerOz}/oz
+        Gold Purchased: ${purchase.goldSold} oz
+        Date: ${purchase.date}
+    `)
+    doc.end()
+}
+
+transactionEmitter.on('transactionCompleted', generatePDF)
+transactionEmitter.on('transactionCompleted', sendEmail)

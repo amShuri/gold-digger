@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 :root {
     --bg: black;
     --gold: gold;
@@ -40,6 +44,11 @@ main {
     background-size: 100%;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+a {
+    text-align: center;
+    text-decoration: none;
 }
 
 img {
@@ -166,8 +175,9 @@ dialog h2 {
     margin-top: 0;
 }
 
+dialog a,
 dialog button {
-    width: 50%;
+    width: 100%;
     padding: .7em;
     background-color: var(--gold);
     background-image: linear-gradient(45deg, var(--gold) 50%, var(--dark-gold));
@@ -181,16 +191,19 @@ dialog button {
     display: block;
 }
 
+dialog a:hover,
 dialog button:hover {
     background-color: var(--brown);
     background-image: linear-gradient(45deg, var(--dark-gold), var(--gold) 50%);
 }
 
+dialog a:focus,
 dialog button:focus {
     outline: 2px solid #fff;
 }
 
 .invest-btn,
+dialog a,
 dialog button {
     cursor: pointer;
     transition: background 0.3s ease, color 0.3s ease;
@@ -203,4 +216,10 @@ dialog button {
             #777,
             #666);
     opacity: 0.50;
+}
+
+.form-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }

@@ -37,4 +37,3 @@ document.getElementById('investment-form').addEventListener('submit', async (e) 
 
     summaryModal.showModal()
 })
-
