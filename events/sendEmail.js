@@ -12,7 +12,6 @@ const transporter = nodemailer.createTransport({
 })
 
 async function sendEmail(purchase) {
-    console.log(purchase)
     try {
         const mailOptions = {
             from: process.env.EMAIL_USER,
