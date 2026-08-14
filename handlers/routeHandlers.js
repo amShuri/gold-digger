@@ -8,14 +8,14 @@ import { transactionEmitter } from '../events/handleEvents.js'
 
 export async function handlePost(req, res) {
     try {
-        const invesmentAmount = await parseJSONBody(req)
+        const investmentAmount = await parseJSONBody(req)
         const data = await getData()
         const goldPrice = getGoldPrice()
         const purchase = {
             date: new Date(),
-            amountPaid: invesmentAmount,
+            amountPaid: investmentAmount,
             pricePerOz: goldPrice,
-            goldSold: invesmentAmount / goldPrice
+            goldSold: investmentAmount / goldPrice
         }
         data.push(purchase)
         
