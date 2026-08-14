@@ -17,13 +17,14 @@ async function sendEmail(purchase) {
             from: process.env.EMAIL_USER,
             to: process.env.EMAIL_USER, // we send the email to ourselves for testing
             subject: 'Transaction Details',
-            text: 'Gold Digger (Scrimba Project)',
-            html: `
-                <h1>Gold Digger (Scrimba Project)</h1>
-                <p>Here are the details of your transaction:</p>
-                <p>Date: ${purchase.date}</p>
-                <p>You bought: ${purchase.goldSold} ounces (ozt) of gold for £${purchase.amountPaid}</p>
-            `
+            text: `
+                Gold Digger (Scrimba Project)
+
+                Amount Paid: £${purchase.amountPaid}
+                Gold Price: £${purchase.pricePerOz}/oz
+                Gold Purchased: ${purchase.goldSold} oz
+                Date: ${purchase.date}
+            `,
         }
 
         await transporter.sendMail(mailOptions)
