@@ -1,5 +1,4 @@
-import path from 'node:path'
-import fs from 'node:fs/promises'
+import { saveData } from '../utils/saveData.js'
 import { sendResponse } from '../utils/sendResponse.js'
 import { parseJSONBody } from '../utils/parseJSONBody.js'
 import { getData } from '../utils/getData.js'
@@ -17,9 +16,8 @@ export async function handlePost(req, res) {
             goldSold: invesmentAmount / goldPrice
         }
         data.push(purchase)
-
-        const filePath = path.join('data', 'data.json')
-        await fs.writeFile(filePath, JSON.stringify(data, null, 2))
+        
+        await saveData(data)
 
         sendResponse(res, 201, 'application/json', JSON.stringify(purchase))
     } catch(err) {
